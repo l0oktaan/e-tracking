@@ -7,12 +7,13 @@
     >
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
+          alt="CGD Logo"
+          class="shrink mr-2 pa-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="@/assets/cgd.png"
           transition="scale-transition"
-          width="40"
+          width="50"
+          @click="$router.push({name:'home'})"
         />
 
         <!-- <v-img
@@ -29,7 +30,7 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        @click="$router.push('/worklist')"
+        @click="$router.push('/work-list')"
         text
       >
         <span class="mr-2">Work List</span>

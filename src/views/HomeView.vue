@@ -1,6 +1,6 @@
 <template>
   <!-- <hello-world /> -->
-  <h3>dsds</h3>
+  <h3>Home</h3>
 </template>
 
 <script>

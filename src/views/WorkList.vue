@@ -79,18 +79,20 @@
                     mdi-delete
                 </v-icon>
             </template>
-            
-                            
-            
-        
         </v-data-table>
     </div> 
+    
   </div>
 </template>
 
 <script>
+// import WorkForm from '@/components/WorkForm.vue'
 export default {
+    components:{
+        // WorkForm
+    },
     data: () => ({
+        
         headers: [
             { text: 'วันที่จัดทำ', value: 'created_date', class: ['blue darken-3', 'white--text'],width: '10%'},
             
@@ -112,6 +114,7 @@ export default {
                         
         ],
         search: '',
+        work: {},
         work_list: [
             {
                 "id": "1",
@@ -140,7 +143,8 @@ export default {
         ]
     }),
     methods:{
-        create_work(){
+        async create_work(){
+            this.$router.push('/work-view')
 
         },
         getThaiDate(item){
@@ -151,6 +155,11 @@ export default {
                 return "";
             }            
         },
+       async editItem(id){
+            // this.status = await 'edit';
+            // this.dialog = await true;
+            this.$router.push('/work-view/' + id)
+        }
     }
     
 }

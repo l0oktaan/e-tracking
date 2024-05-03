@@ -19,14 +19,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/DashboardView.vue')
   },
   {
-    path: '/worklist',
-    name: 'worklist',    
+    path: '/work-list',
+    name: 'work-list',    
     component: () => import('../views/WorkList.vue')
   },
   {
-    path: '/workform',
-    name: 'workform',    
-    component: () => import('../components/WorkForm.vue')
+    path: '/work-view',
+    name: 'work-view',    
+    component: () => import('../views/WorkView.vue')
+  },
+  {
+    path: '/work-view/:id',
+    name: 'work-view-show',    
+    component: () => import('../views/WorkView.vue')
   }
 ]
 
