@@ -15,12 +15,12 @@
           
         </v-tab>
   
-        <v-tab href="#tab-2" disabled="true">
+        <v-tab href="#tab-2" >
           การมอบหมายงาน
           
         </v-tab>
   
-        <v-tab href="#tab-3" disabled="true">
+        <v-tab href="#tab-3" >
           การติดตามงาน
           
         </v-tab>
@@ -38,7 +38,7 @@
       </v-tabs-items>
       <v-tabs-items v-model="tab">
           <v-tab-item value="tab-3">
-              <div class="tab3">Tab3</div>
+              <work-status></work-status>
           </v-tab-item>
       </v-tabs-items>    
       
@@ -50,12 +50,14 @@
   import Swal from 'sweetalert2'
   import WorkForm from '@/components/WorkForm'
   import WorkAssign from '@/components/WorkAssign'
+  import WorkStatus from '@/components/WorkStatus'
   
   export default {
   
       components: {       
           WorkAssign,
-          WorkForm       
+          WorkForm,
+          WorkStatus   
       },
       delimiters: ['${', '}'], // Avoid Twig conflicts
       data: () => ({
@@ -177,9 +179,7 @@
               this.$refs.file.files = event.dataTransfer.files;
               this.onChange(); // Trigger the onChange event manually
               // Clean up
-              document.getElementById('assetsFieldHandle').value= null;          
-              
-              
+              document.getElementById('assetsFieldHandle').value= null;
               event.currentTarget.classList.add('bg-gray-100');
               event.currentTarget.classList.remove('bg-green-300');
           },

@@ -4,13 +4,13 @@
         class="mycard"
     >    
         <div class="title">การมอบหมายงาน</div>
-        <v-row>
+        <v-row class="top_head">
             <v-col class="text-center pt-2"><p class="head">รายชื่อหน่วยงาน - บุคคล</p></v-col>
             
-            <v-col class="text-center pt-2"><p class="head">รายชื่อหน่วยงาน - บุคคล ที่ถูกเลือก</p></v-col>
+            <v-col class="text-center pt-2"><p class="head">รายชื่อหน่วยงาน - บุคคล ที่เลือก</p></v-col>
         </v-row>
         <v-row>
-            <v-col>            
+            <v-col class="col-left">            
                 <v-treeview
                     v-model="selection"
                     :items="items"
@@ -20,7 +20,7 @@
                     dense      
                 ></v-treeview>
             </v-col>
-            <v-divider vertical dark="true"></v-divider>
+            <v-divider vertical dark></v-divider>
             <v-col
                 class="pl-6"    
                 cols="6"
@@ -32,8 +32,14 @@
                     <div class="target_list"
                     v-for="node in selection"
                     :key="node.id"
+                    >                    
+                    <v-icon 
+                        class="btn_deselect"
+                        @click="deselect(node.id)"
                     >
-                    {{ node.name }}
+                        mdi-close                            
+                    </v-icon>                    
+                        {{ node.name }}
                     </div>
                 </template>
             </v-col>
@@ -76,14 +82,21 @@ export default {
         },
         {
             id: 2,
-            name: 'กลุ่มงาน 2',
+            name: 'กลุ่มงานรักษาความปลอดภัยด้านสารสนเทศ',
             children: [
-            { id: 21, name: 'Grandchild #1' },
+            { id: 21, name: 'นายทรงวุฒิ สัจจบุตร' },
             { id: 22, name: 'Grandchild #2' },
             ],
         },
       ],
     }),
+    methods: {
+        deselect(id){
+            let index = this.selection.findIndex(x=>x.id==id);
+            console.log('id : ' + id + ' index : ' + index)
+            this.selection.splice(index,1);
+        }
+    },
 }
 </script>
 <style scoped>
@@ -103,9 +116,11 @@ export default {
 }
 .head{
     font-size: 1.2rem;
+    margin-bottom: 5px;
 }
 .content{        
     padding: 10px;
+    
     
 }
 .mycard{
@@ -118,8 +133,19 @@ export default {
     background-color: #0e4aee;
     color: #fff;
     padding: 5px;
+    
+}
+.top_head{
+    border-bottom: solid 1px #000;
 }
 .target_list{
     height: 40px;
+}
+
+.btn_deselect:hover{
+    color: red;
+}
+.col-left{
+    border-right: solid 1px #000;
 }
 </style>
