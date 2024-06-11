@@ -1,6 +1,6 @@
 <template>
     <div class="mybox">
-      <v-tabs      
+      <!-- <v-tabs      
           v-model="tab"
         
         centered
@@ -40,9 +40,48 @@
           <v-tab-item value="tab-3">
               <work-status></work-status>
           </v-tab-item>
-      </v-tabs-items>    
-      
+      </v-tabs-items>     -->
+      <v-stepper v-model="el" width="90%" alt-labels non-linear>
+        <v-stepper-header>
+            <v-stepper-step
+            editable    
+                step="1"
+            >
+                รายละเอียดงาน
+            </v-stepper-step>
+
+            <v-divider></v-divider>
+
+            <v-stepper-step
+                editable
+                step="2"
+            >
+                การมอบหมายงาน
+            </v-stepper-step>
+
+            <v-divider></v-divider>
+
+            <v-stepper-step step="3" editable>
+                การติดตามงาน
+            </v-stepper-step>
+        </v-stepper-header>
+
+        <v-stepper-items>
+        <v-stepper-content step="1">
+            <work-form></work-form>
+        </v-stepper-content>
+
+        <v-stepper-content step="2">
+            <work-assign></work-assign>
+        </v-stepper-content>
+
+        <v-stepper-content step="3">
+            <work-status></work-status>
+        </v-stepper-content>
+        </v-stepper-items>
+    </v-stepper>
     </div>
+
   </template>
   
   <script>
@@ -61,6 +100,7 @@
       },
       delimiters: ['${', '}'], // Avoid Twig conflicts
       data: () => ({
+          el: 1,
           book_date_menu: false,
           due_date_menu: false,
           book_date: new Date().toISOString().substr(0, 10),
@@ -199,10 +239,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;    
+      margin-top: 10px;
   }
   .content{
       width: 100%;
-      padding: 10px;    
+      padding: 10px 0 0 0;    
       
   }
   .mycard{
@@ -237,5 +278,11 @@
   }
   .v-tab{
     font-size: 1.2rem;
+  }
+ .v-stepper__header{
+    padding: 10px;
+  }
+  .v-stepper__header > .v-divider{
+    margin-top: 10px!important;
   }
   </style>

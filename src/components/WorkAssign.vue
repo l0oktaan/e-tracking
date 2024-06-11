@@ -3,7 +3,7 @@
         elevation="4"
         class="mycard"
     >    
-        <div class="title">การมอบหมายงาน</div>
+        <!-- <div class="title">การมอบหมายงาน</div> -->
         <v-row class="top_head">
             <v-col class="text-center pt-2"><p class="head">รายชื่อหน่วยงาน - บุคคล</p></v-col>
             
@@ -136,6 +136,7 @@ export default {
     
 }
 .top_head{
+    border-top: solid 1px #000;
     border-bottom: solid 1px #000;
 }
 .target_list{
