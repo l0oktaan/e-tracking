@@ -300,7 +300,7 @@ extend('regex', {
     message: 'รูปแบบข้อมูลไม่ถูกต้อง',
 })
 export default {
-
+    props: ['work_status'],
     components: {
       
       ValidationProvider,
@@ -342,6 +342,9 @@ export default {
         },
     },
     methods: {
+        workUpdate(status){
+            this.$emit("workUpdate",1, status)
+        },
         async deleteFile(item,index) {
       // Prompt here with text if required
             // this.form_edit.document_relate.splice(index, 1)

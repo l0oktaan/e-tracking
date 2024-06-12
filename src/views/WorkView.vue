@@ -68,15 +68,15 @@
 
         <v-stepper-items>
         <v-stepper-content step="1">
-            <work-form></work-form>
+            <work-form :work-status="work-status" @workUpdate="workUpdate"></work-form>
         </v-stepper-content>
 
         <v-stepper-content step="2">
-            <work-assign></work-assign>
+            <work-assign :work-status="work-status" @workUpdate="workUpdate"></work-assign>
         </v-stepper-content>
 
         <v-stepper-content step="3">
-            <work-status></work-status>
+            <work-status :work-status="work-status" @workUpdate="workUpdate"></work-status>
         </v-stepper-content>
         </v-stepper-items>
     </v-stepper>
@@ -110,7 +110,8 @@
           work : {},
           file_list: [],
           documents: [],
-          tab: null
+          tab: null,
+          work_status: 0
       }),
       computed: {
           // getDocumentSize() {
@@ -157,6 +158,9 @@
                   
                   
               }
+          },
+          workUpdate(work_id, work_status){
+            this.work_status = work_status
           },
           downloadFile(item){
               if (item.id !=0 ){
